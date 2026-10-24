@@ -142,7 +142,7 @@ def main():
         elif choice == '5':
             trip_summary()
         elif choice == '6':
-            print("Exiting system. Goodbye!")
+            print("Exiting the bus shuttle system. Goodbye!")
             break
         else:
             print("Invalid choice. Please select from the menu.")
