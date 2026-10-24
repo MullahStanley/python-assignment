@@ -78,3 +78,26 @@ def cancel_seat():
             print("Seat is already empty or invalid.")
     except ValueError:
         print("Invalid input.")
+
+def verify_passenger():
+    """Allows the conductor to verify passengers or mark no-shows."""
+    try:
+        seat_no = int(input("Enter seat number to verify: "))
+        if seat_no in passengers:
+            passenger = passengers[seat_no]
+            print(f"\nPassenger: {passenger['name']} | ID: {passenger['id']}")
+            print("1. Boarded\n2. No-Show")
+            action = input("Select action (1 or 2): ").strip()
+            
+            if action == '2':
+                seats[seat_no] = "Empty"
+                del passengers[seat_no]
+                print(f"Seat {seat_no} cleared for new booking.")
+            elif action == '1':
+                print("Passenger marked as boarded.")
+            else:
+                print("Invalid action.")
+        else:
+            print("Seat is not booked.")
+    except ValueError:
+        print("Invalid input.")
