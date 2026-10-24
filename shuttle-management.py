@@ -37,7 +37,7 @@ def book_seat():
         elif seats[seat_no] == "Booked":
             print("Seat is already taken.")
         else:
-            # String Operations: cleaning and formatting
+            # string operations for cleaning and formatting
             full_name = input("Enter passenger's full name: ").strip().title()
             phone_number = input("Enter phone number: ").strip()
             national_id = input("Enter National ID: ").strip()
@@ -65,3 +65,16 @@ def book_seat():
             print("**********************")
     except ValueError:
         print("Invalid input. Please enter a valid number.")
+
+def cancel_seat():
+    """Cancels a booking and frees the seat."""
+    try:
+        seat_no = int(input("Enter seat number to cancel: "))
+        if 1 <= seat_no <= 14 and seats[seat_no] == "Booked":
+            seats[seat_no] = "Empty"
+            del passengers[seat_no]
+            print(f"Booking for seat {seat_no} has been cancelled.")
+        else:
+            print("Seat is already empty or invalid.")
+    except ValueError:
+        print("Invalid input.")
