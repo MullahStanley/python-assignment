@@ -117,3 +117,35 @@ def trip_summary():
     for seat, details in passengers.items():
         print(f"Seat {seat}: {details['name']} (Phone: {details['phone']})")
     print("--------------------")
+
+def main():
+    """Main menu loop."""
+    while True:
+        print("\n=== BUS SEAT BOOKING SYSTEM ===")
+        print("1. Display Seating Map")
+        print("2. Book a Seat")
+        print("3. Cancel Booked Seat")
+        print("4. Passenger Verify (Conductor)")
+        print("5. Trip Summary (Supervisor)")
+        print("6. Exit")
+        
+        choice = input("Enter your choice (1-6): ").strip()
+        
+        if choice == '1':
+            show_map()
+        elif choice == '2':
+            book_seat()
+        elif choice == '3':
+            cancel_seat()
+        elif choice == '4':
+            verify_passenger()
+        elif choice == '5':
+            trip_summary()
+        elif choice == '6':
+            print("Exiting system. Goodbye!")
+            break
+        else:
+            print("Invalid choice. Please select from the menu.")
+
+if __name__ == "__main__":
+    main()
