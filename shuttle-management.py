@@ -20,7 +20,8 @@ def show_map():
         else:
             print(f"[{seat}]\t", end="")
         
-        # Use Modulo to break the line after every 3 seats for a shuttle layout
+        # Using Modulo to break the line after every 3 seats for a shuttle like layout
         if seat % 3 == 0:
             print()
     print("\n-------------------")
+
