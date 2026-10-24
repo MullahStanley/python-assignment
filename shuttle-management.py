@@ -101,3 +101,19 @@ def verify_passenger():
             print("Seat is not booked.")
     except ValueError:
         print("Invalid input.")
+
+def trip_summary():
+    """Generates a financial and passenger summary for the fleet supervisor."""
+    total_booked = sum(1 for seat in seats[1:] if seat == "Booked")
+    empty_seats = total_seats - total_booked
+    total_cash = total_booked * ticket_fare
+    
+    print("\n--- TRIP SUMMARY ---")
+    print(f"Booked Seats: {total_booked}")
+    print(f"Empty Seats: {empty_seats}")
+    print(f"Total Cash Collected: {total_cash} KES")
+    
+    print("\nPassenger Manifest:")
+    for seat, details in passengers.items():
+        print(f"Seat {seat}: {details['name']} (Phone: {details['phone']})")
+    print("--------------------")
