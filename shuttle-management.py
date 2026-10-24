@@ -25,3 +25,43 @@ def show_map():
             print()
     print("\n-------------------")
 
+def book_seat():
+    """Handles booking a seat, validating input, and generating a receipt."""
+    show_map()
+    try:
+        seat_no = int(input("Enter seat number to book (1-14): "))
+        
+        # Comparison and Logical Operations for validation
+        if seat_no < 1 or seat_no > 14:
+            print("Invalid seat number. Please choose between 1 and 14.")
+        elif seats[seat_no] == "Booked":
+            print("Seat is already taken.")
+        else:
+            # String Operations: cleaning and formatting
+            full_name = input("Enter passenger's full name: ").strip().title()
+            phone_number = input("Enter phone number: ").strip()
+            national_id = input("Enter National ID: ").strip()
+            
+            # Format validation
+            if not (phone_number.isdigit() and national_id.isdigit()):
+                print("Error: Phone number and National ID must contain only numbers.")
+                return
+
+            # Update list and dictionary
+            seats[seat_no] = "Booked"
+            passengers[seat_no] = {
+                "name": full_name,
+                "phone": phone_number,
+                "id": national_id
+            }
+            
+            # Output using f-strings
+            print("\n*** TICKET RECEIPT ***")
+            print(f"Shuttle: {shuttle_plate}")
+            print(f"Route: {route}")
+            print(f"Passenger: {full_name}")
+            print(f"Seat No: {seat_no}")
+            print(f"Fare: {ticket_fare} KES")
+            print("**********************")
+    except ValueError:
+        print("Invalid input. Please enter a valid number.")
